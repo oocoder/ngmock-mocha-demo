@@ -1,6 +1,9 @@
-module.exports = (function(angular){
-    return angular
-    .config()
+// MAIN.JS - Angular's app bootstrap module
+module.exports = (function(app){
+    return app.angular.module('demo-app', ['ngSomeModule'])
+    .config(['$compileProvider', function ($compileProvider) {
+        $compileProvider.debugInfoEnabled(false);
+    }])
     .factory('$runBlock', ['$someService', '$log', function($someService, $log){
         return {
             init : function(){ $log.log('$someService loaded...'); }
@@ -8,7 +11,6 @@ module.exports = (function(angular){
     }])
     .run(['$runBlock', function($runBlock){
         $runBlock.init();    
-    }]);
+    }]);    
     
-    
-})(window.angular);
+})(require('./bootstrap-ui'));
