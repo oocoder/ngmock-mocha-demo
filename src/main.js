@@ -1,6 +1,6 @@
 // MAIN.JS - Angular's app bootstrap module
-module.exports = (function(app){
-    return app.angular.module('demo-app', ['ngSomeModule'])
+module.exports = (function(angular){
+    var app = angular.module('demo-app', ['ngSomeModule'])
     .config(['$compileProvider', function ($compileProvider) {
         $compileProvider.debugInfoEnabled(false);
     }])
@@ -11,6 +11,10 @@ module.exports = (function(app){
     }])
     .run(['$runBlock', function($runBlock){
         $runBlock.init();    
-    }]);    
+    }]);
     
-})(require('./bootstrap-ui'));
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, [app.name]);
+    });        
+    
+})(require('./bootstrap-ui').angular);
