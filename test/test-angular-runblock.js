@@ -1,13 +1,23 @@
+setupTests();
+
 describe('AngularRunBlock', function(){
+    var app = require('../src/main');
+    var sinon = require('sinon');
     
-    // var angular = require('angular/angular');
-    // window.mocha = true;
-    // window.beforeEach = beforeEach;
-    // window.afterEach = afterEach;
-    // require('angular-mocks/angular-mocks');
+    beforeEach(angular.mock.module(app.name));
     
     it('should bootstrap run blocks', function(){
-        
-    });    
+        var initRunBlock = sinon.spy();
+        angular.mock.module({
+            '$runBlock' : {
+                init : initRunBlock
+            }
+        });
+
+        // execute run blocks 
+        angular.mock.inject();
+        initRunBlock.called.should.be.true;
+    });
+    
 });
 
