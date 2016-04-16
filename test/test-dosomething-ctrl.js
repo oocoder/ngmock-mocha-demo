@@ -1,9 +1,11 @@
-describe('DoSomethingCtrl', function(){
+setupTests();
+
+describe('Verify Controllers', function(){
     var app = require('../src/main.js');
     var $controller;
     
     beforeEach(angular.mock.module(app.name));
-    beforeEach(angular.mock.inject(function(_$controller_){ 
+    beforeEach(inject(function(_$controller_){ 
         $controller = function(name, params){
             return _$controller_(name, params);
         };

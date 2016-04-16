@@ -1,6 +1,6 @@
 setupTests();
 
-describe('AngularRunBlock', function(){
+describe('Verify Angular\'s bootstrap', function(){
     var app = require('../src/main');
     var sinon = require('sinon');
     
@@ -15,7 +15,7 @@ describe('AngularRunBlock', function(){
         });
 
         // execute run blocks 
-        angular.mock.inject();
+        inject();
         initRunBlock.called.should.be.true;
     });
     

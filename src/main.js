@@ -7,6 +7,7 @@ module.exports = (function(angular){
         $compileProvider.debugInfoEnabled(false);
     }])
     .factory('$runBlock', ['$someService', '$log', function($someService, $log){
+        $someService.run();
         return {
             init : function(){ $log.log('$someService loaded...'); }
         };        
