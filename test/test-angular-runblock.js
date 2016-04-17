@@ -16,7 +16,21 @@ describe('Verify Angular\'s bootstrap', function(){
 
         // execute run blocks 
         inject();
-        initRunBlock.called.should.be.true;
+        initRunBlock.should.have.been.calledOnce;
+    });
+    
+    it('should refresh data from someAPI', function(){
+        var refreshData = sinon.spy();
+        angular.mock.module({
+            '$someService': {
+                refreshData: refreshData
+            }
+        });
+        
+        inject(function($runBlock){
+            refreshData.should.have.been.calledOnce;
+        });
+        
     });
     
 });
