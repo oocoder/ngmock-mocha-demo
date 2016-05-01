@@ -9,14 +9,15 @@ module.exports = (function(angular){
     .factory('$runBlock', ['$someService', '$log', function($someService, $log){
         $someService.refreshData();
         return {
-            init : function(){ $log.log('$someService loaded...'); }
+            init : _ => $log.log('$someService loaded...')
         };        
     }])
     .run(['$runBlock', function($runBlock){
-        $runBlock.init();    
+        $runBlock.init();
     }]);
     
-    // manually bootstrap angular app
+    // manually bootstrap angular app to have better
+    // control for testing. 
     angular.element(document).ready(function() {
         angular.bootstrap(document, [app.name]);
     });
